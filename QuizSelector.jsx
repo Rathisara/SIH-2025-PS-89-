@@ -11,20 +11,16 @@ const QuizSelector = () => {
   ];
 
   if (selectedQuiz) {
-    return <Quiz quizSet={selectedQuiz} />;
+    return <Quiz quizSet={selectedQuiz} onBack={() => setSelectedQuiz(null)} />;
   }
 
   return (
     <div className="quiz-container">
-      <h2>Select a Quiz</h2>
+      <h2>📝 Select a Quiz</h2>
       <p>Choose the test that best matches your interest:</p>
       <div className="quiz-options">
         {quizzes.map((q) => (
-          <button
-            key={q.id}
-            className="quiz-btn"
-            onClick={() => setSelectedQuiz(q.set)}
-          >
+          <button key={q.id} onClick={() => setSelectedQuiz(q.set)}>
             {q.name}
           </button>
         ))}

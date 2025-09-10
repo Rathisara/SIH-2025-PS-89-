@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { quizData } from "./quizData";
 
-const Quiz = ({ quizSet }) => {
+const Quiz = ({ quizSet, onBack }) => {
   const questions = quizData[quizSet];
   const [current, setCurrent] = useState(0);
   const [score, setScore] = useState(0);
@@ -9,7 +9,6 @@ const Quiz = ({ quizSet }) => {
 
   const handleAnswer = (isCorrect) => {
     if (isCorrect) setScore(score + 1);
-
     if (current + 1 < questions.length) {
       setCurrent(current + 1);
     } else {
@@ -20,8 +19,22 @@ const Quiz = ({ quizSet }) => {
   if (finished) {
     return (
       <div className="quiz-result">
-        <h2>Quiz Finished 🎉</h2>
-        <p>Your Score: {score} / {questions.length}</p>
+        <h2>🎉 Quiz Finished!</h2>
+        <p>
+          Your Score: <span>{score}</span> / {questions.length}
+        </p>
+        <div className="quiz-buttons">
+          <button
+            onClick={() => {
+              setScore(0);
+              setCurrent(0);
+              setFinished(false);
+            }}
+          >
+            🔄 Retry Quiz
+          </button>
+          <button onClick={onBack}>⬅ Back to Other Tests</button>
+        </div>
       </div>
     );
   }
@@ -31,7 +44,7 @@ const Quiz = ({ quizSet }) => {
       <h3>
         Question {current + 1} of {questions.length}
       </h3>
-      <p>{questions[current].question}</p>
+      <p className="question">{questions[current].question}</p>
       <div className="options">
         {questions[current].options.map((opt, i) => (
           <button

@@ -1,0 +1,133 @@
+/* =========================
+   Base Colors & Typography
+   ========================= */
+:root {
+  --primary: #2563eb;
+  --primary-hover: #1e40af;
+  --secondary: #718096;
+  --secondary-hover: #4a5568;
+  --accent: #1d4ed8;
+  --success: #16a34a;
+  --success-hover: #15803d;
+  --background: #f5f8ff;
+  --card-bg: #ffffff;
+  --text-dark: #333;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text-dark);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================
+   Dashboard Layout
+   ========================= */
+.dashboard {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.dashboard h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: var(--accent);
+}
+
+/* Quiz Container */
+.quiz-container,
+.quiz-box,
+.quiz-result {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 25px;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Headings */
+.quiz-container h2,
+.quiz-result h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #2b6cb0; /* Professional blue */
+}
+
+/* Questions */
+.quiz-box h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #333;
+}
+.question {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+/* Options */
+.options,
+.quiz-options,
+.quiz-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.options button,
+.quiz-options button,
+.quiz-buttons button {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  background: linear-gradient(135deg, #4f9cf9, #2563eb);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.options button:hover,
+.quiz-options button:hover,
+.quiz-buttons button:hover {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  transform: translateY(-2px);
+}
+
+/* Score Highlight */
+.quiz-result p span {
+  font-weight: bold;
+  color: #2563eb;
+}
+
+/* Retry & Back Button in Row */
+.quiz-buttons {
+  flex-direction: row;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+/* Smooth Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
